@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0;
+            height: 100vh;
+            width: 100%;
+            display: grid;
+            /* todos los elementos se centran vertical y horizontal */
+            place-items: center;
+            counter-reset: score;
+        }
+        .score{
+            padding: 40px;
+           text-align: center;
+           color: rgb(141, 20, 87);
+        }
+        .phone{
+            position: relative;
+            border: 8px solid black;
+            border-radius: 40px;
+            height: 600px;
+            width: 300px;
+            background: #CCEFFF;
+            box-shadow: 0 19px 38px rgba(0, 0, 0.30),
+            0 4px 3px rgba(0, 0, 0.10);
+        }
+        .layer-1{
+            position: absolute;
+            z-index: 1;
+            height: 450px;
+            width: 80px;
+            /* background-color: palegoldenrod; */
+            bottom: 0;
+            right: 60px;
+            /* animacion que va a hacer que el conejo suba y baje */
+            animation-name: layer;
+            animation-duration: 1s;
+            animation-timing-function: ease-in-out;
+            animation-iteration-count: infinite;
+        }
+        @keyframes layer {           
+           0%{
+            bottom: 0;
+           }
+           25%{
+            bottom: -80px;
+           }
+           100%{
+            bottom: 0;
+           }                 
+        }
+        input[type=checkbox]{
+            position: relative;
+            appearance: none;
+            cursor: pointer;
+            z-index: 2;
+            width: 80%;
+            height: 50px;
+            margin: 0;
+            top: 0;
+        }
+        input[type=checkbox]:focus{
+            appearance: none;
+            outline: none;
+        }
+        input:checked{
+            counter-increment: score;
+        }
+        .score::after{
+            content:counter(score);
+        }
+        /* clase padre layer-1 hijo input de tipo checkbox*/
+        .layer-1 input[type=checkbox]{
+            position: absolute;
+            appearance: none;
+            cursor: pointer;
+            z-index: 1;
+            width: 100%;
+            height: 80px;
+        }
+        .layer-2{
+            position: absolute;
+            z-index: 2;
+            height: 450px;
+            width: 80px;
+            /* background-color: white; */
+            bottom: 0;
+            left: 60px;
+            /* animacion */
+            animation-name: layer;
+            animation-duration: 2s;
+            animation-timing-function: ease-in-out;
+            animation-iteration-count: infinite;
+        }
+        .layer-2 input[type=checkbox]{
+            position: absolute;
+            appearance: none;
+            cursor: pointer;
+            z-index: 2;
+            width: 100%;
+            height: 80px;
+        }
+        .layer-3{
+            position: absolute;
+            z-index: 3;
+            /* centrar el muro */
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+            width: 220px;
+            height: 400px;
+            /* posicionamiento de abajo hacia arriba */
+            bottom: 0;
+            border-radius:15px;
+            background-color: brown;
+
+        }
+        .layer-4{
+            position: absolute;
+            z-index: 4;
+            /* background-color: white; */
+            left: 24px;
+            height: 350px;
+            width: 80px;
+            bottom: 0;
+            /* animacion */
+            animation-name: layer;
+            animation-duration: 1.5s;
+            animation-timing-function: ease-in-out;
+            animation-iteration-count: infinite;
+        }
+        .layer-4 input[type=checkbox]{
+            position: absolute;
+            appearance: none;
+            cursor: pointer;
+            z-index: 4;
+            width: 100%;
+            height: 80px;
+        }
+        .layer-5{
+            position: absolute;
+            z-index: 5;
+            left: 0;
+            /* right: 200px; */
+            width: 220px;
+            height: 300px;
+            /* posicionamiento de abajo hacia arriba */
+            bottom: 0;
+            border-radius:15px;
+            background-color: rgb(223, 113, 159);
+        }
+        .layer-6{
+            position: absolute;
+            z-index: 6;
+            /* background-color: white; */
+            left: 200px;
+            height: 250px;
+            width: 80px;
+            bottom: 0;
+            /* animacion */
+            animation-name: layer;
+            animation-duration: 2.5s;
+            animation-timing-function: ease-in-out;
+            animation-iteration-count: infinite;
+        }
+        .layer-6 input[type=checkbox]{
+            position: absolute;
+            appearance: none;
+            cursor: pointer;
+            z-index: 6;
+            width: 100%;
+            height: 80px;
+        }
+        .layer-7{
+            position: absolute;
+            z-index: 7;
+            right: 0;
+            /* left: 120px; */
+            margin: 0 auto;
+            width: 150px;
+            height: 200px;
+            /* posicionamiento de abajo hacia arriba */
+            bottom: 0;
+            border-radius:15px;
+            background-color: rgb(131, 144, 218);
+        }
+        .layer-8{
+            position: absolute;
+            z-index: 8;
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+            width: 220px;
+            height: 120px;
+            /* posicionamiento de abajo hacia arriba */
+            bottom: 0;
+            border-radius:15px;
+            background-color: rgb(42, 165, 134);
+
+        }
+        .layer-9{
+            position: absolute;
+            z-index: 9;
+            left: 0;
+            width: 120px;
+            height: 90px;
+            /* posicionamiento de abajo hacia arriba */
+            bottom: 0;
+            border-radius:15px;
+            background-color: brown;
+        }
+        .layer-10{
+            position: absolute;
+            z-index: 10;
+            right: 0;
+            width: 120px;
+            height: 90px;
+            /* posicionamiento de abajo hacia arriba */
+            bottom: 0;
+            border-radius:15px;
+            background-color: brown;
+        }
+        /* Estilos */
+        .left-ear--outer{
+            /* oreja */
+            background-color: white;
+            border-radius: 90%;
+            width: 20px;
+            height: 50px;
+            /* para trabajar con las propiedades left right... */
+            position: absolute;
+            left: 10px;
+        }
+        .left-ear--inner{
+            /* oreja */
+            background-color: pink;
+            border-radius: 90%;
+            width: 10px;
+            height: 50px;
+            position: absolute;
+            /* centrar */
+            top: 8px;
+            left: 15px;
+        }
+        /* oreja derecha */
+        .right-ear--outer{
+            /* oreja */
+            background-color: white;
+            border-radius: 90%;
+            width: 20px;
+            height: 50px;
+            /* para trabajar con las propiedades left right... */
+            position: absolute;
+            right: 10px;
+        }
+        .right-ear--inner{
+            /* oreja */
+            background-color: pink;
+            border-radius: 90%;
+            width: 10px;
+            height: 50px;
+            position: absolute;
+            /* centrar */
+            top: 8px;
+            right: 15px;
+        }
+        .head{
+            background-color: white;
+            position: absolute;
+            right: 0;
+            left: 0;
+            margin: 0 auto;
+            border-radius: 50%;
+            width: 100%;
+            height: 80px;
+            top: 30px;
+        }
+        .head__eye{
+            background-color: black;
+            border-radius: 50%;
+            width: 4px;
+            height: 4px;
+            position: absolute;
+            top: 13px;
+            /* animacion para que el conejo parpadee*/
+            animation-name: blink;
+            animation-duration: 2s;
+            animation-iteration-count: infinite;
+        }
+        @keyframes blink{
+            /* Estos porcentajes se calculan a partir del 
+                valor dado a animation-duration */
+            0%{
+                height: 4px;
+            }
+            5%{
+                transform: translate(0px, 2px);
+                height: 1px;
+            }
+            10%{
+                transform: translate(0px, 0px);
+
+                height: 4px;
+            }
+        }
+        .head__eye--left{
+            left: 48px;
+        }
+        .head__eye--right{
+            left: 28px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="phone">
+        <div class="layer-1">
+            <input type="checkbox">
+            <div class="left-ear--outer"></div>
+            <div class="left-ear--inner"></div>
+            <div class="right-ear--outer"></div>
+            <div class="right-ear--inner"></div>
+            <div class="head">
+                <div class="head__eye head__eye--left"></div>
+                <div class="head__eye head__eye--right"></div>
+            </div>
+        </div>
+        <div class="layer-2">
+            <input type="checkbox">
+            <div class="left-ear--outer"></div>
+            <div class="left-ear--inner"></div>
+            <div class="right-ear--outer"></div>
+            <div class="right-ear--inner"></div>
+            <div class="head">
+                <div class="head__eye head__eye--left"></div>
+                <div class="head__eye head__eye--right"></div>
+            </div>
+        </div>
+        <div class="layer-3"></div>
+        <div class="layer-4">
+            <input type="checkbox">
+            <div class="left-ear--outer"></div>
+            <div class="left-ear--inner"></div>
+            <div class="right-ear--outer"></div>
+            <div class="right-ear--inner"></div>
+            <div class="head">
+                <div class="head__eye head__eye--left"></div>
+                <div class="head__eye head__eye--right"></div>
+            </div>
+        </div>
+        <div class="layer-5"></div>
+        <div class="layer-6">
+            <input type="checkbox">
+            <div class="left-ear--outer"></div>
+            <div class="left-ear--inner"></div>
+            <div class="right-ear--outer"></div>
+            <div class="right-ear--inner"></div>
+            <div class="head">
+                <div class="head__eye head__eye--left"></div>
+                <div class="head__eye head__eye--right"></div>
+            </div>
+        </div>
+        <div class="layer-7"></div>
+        <div class="layer-8"></div>
+        <div class="layer-9"></div>
+        <div class="layer-10"></div>
+ 
+        <h3 class="score">Score: </h3>
+
+    </div>
+</body>
+</html>
